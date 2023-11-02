@@ -1,17 +1,24 @@
 .skeleton {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
+  background: url("../../assets/PikachuSkeleton.svg"), linear-gradient( #f4f4f4b4 25%, #efedc78d 50%, #fdfbd9 75%) ;
+  // background-color: linear-gradient( #2c1d11 25%, #542d2d 50%, #931616 75%);
+  // background-image: url("../../assets/PikachuSkeleton.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+  background-position: center;
+  animation: loading 4s infinite;
+  border: rgb(219, 219, 219) 0.6px solid;
 }
 
 @keyframes loading {
   0% {
-    background-position: -200% 0;
+    background-position: 0% 0;
+    transform: rotate(0deg); /* Поворот на 0 градусов */
   }
   100% {
-    background-position: 200% 0;
+    background-position: 0% 0;
+    transform: rotate(360deg); /* Поворот на 360 градусов (по часовой стрелке) */
   }
 }
