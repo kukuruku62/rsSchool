@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './Header.module.scss';
-import logo from '../../assets/pokemon-logo-header.svg';
+import Logo from '../../assets/pokemon-logo-header.svg';
 import { Link } from 'react-router-dom';
+import { SearchContext } from '../../App';
+import { SearchForm } from './SearchForm/SearchForm';
+
 
 export const Header = () => {
+
+  // const {search, setSearch} = useContext(SearchContext)
+  // console.log(search)
+  // const [inputValue, setInputValue] = useState('');
+  // const [fetchData, setFetchData] = useState('');
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
+  //   e.preventDefault();
+    
+  // }
+
   return (
     <header className={styles.container}>
       <Link to="/">
-        <img src={logo} alt="Logo" />
+        <img src={Logo} alt="Logotype" />
       </Link>
-      <div>
-        <form>
-          {/* <label htmlFor=""></label> */}
-          <input type="search" placeholder="Search pokemon..." />
-          <button type='submit'></button>
-        </form>
-      </div>
+      <SearchForm />
     </header>
   );
 };
