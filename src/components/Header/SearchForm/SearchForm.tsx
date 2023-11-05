@@ -3,14 +3,18 @@ import styles from './SearchForm.module.scss';
 import { SearchContext } from '../../../App';
 
 export const SearchForm = () => {
+
+  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const [inputValue, setInputValue] = useState('');
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSearchValue(inputValue)
+    // добавить чтобы при клике на форму происходило setSearch(value or search???)
   };
-  // const { search, setSearch } = useContext(SearchContext);
-    const [inputValue, setInputValue] = useState('');
 
   return (
-    <div>
+    <div> 
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           value={inputValue}

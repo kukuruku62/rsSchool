@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import {SearchData} from "./utils/SearchData"
+import "normalize.css"
+import {BrowserRouter} from 'react-router-dom'
+// const searchData = new SearchData();
 
-const searchData = new SearchData();
-
-searchData.getAllItems().then(res => console.log(res.results))
+// searchData.getAllItems().then(res => console.log(res.count))
+// searchData.getItemById('pikachu').then(res => console.log(res.sprites.front_default))
+// searchData.getAllItems().then(res => console.log(res.results.map((el) => el.name)))
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <BrowserRouter>
+       <App />
+    </BrowserRouter>
+ 
 );

@@ -1,23 +1,23 @@
-// import { Component } from "react";
+// // import { Component } from "react";
 
-export class SearchData {
-  _apiBase: string = 'https://pokeapi.co/api/v2/';
+// export class SearchData {
+//   _apiBase: string = 'https://pokeapi.co/api/v2/';
 
-  getDataFromResource = async (url: string) => {
-    let res = await fetch(url);
+//   getDataFromResource = async (url: string) => {
+//     let res = await fetch(url);
 
-    if (!res.ok) {
-      throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-    }
+//     if (!res.ok) {
+//       throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+//     }
 
-    return await res.json();
-  };
+//     return await res.json();
+//   };
 
-  getAllItems = () => {
-    return this.getDataFromResource(`${this._apiBase}pokemon/`);
-  };
+//   getAllItems = () => {
+//     return this.getDataFromResource(`${this._apiBase}pokemon`);
+//   };
 
-  getItemById = (id: string) => {
-    return this.getDataFromResource(`${this._apiBase}/pokemon/${id}`);
-  };
-}
+//   getItemById = (id: string) => {
+//     return this.getDataFromResource(`${this._apiBase}pokemon/${id}`);
+//   };
+// }

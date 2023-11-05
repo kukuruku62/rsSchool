@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import React, { useContext, useState } from 'react';
+import { Layout } from './components/Layout/Layout';
+import { MainPage } from './pages/MainPage';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+
+
+interface SearchContextValue {
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const SearchContext = React.createContext<SearchContextValue>({
+  searchValue: '',
+  setSearchValue: () => {},
+});
+
+// console.log(searchContext)
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [searchValue, setSearchValue] = useState('');
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+      <Header/>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </Layout>
+    </SearchContext.Provider>
   );
 }
 

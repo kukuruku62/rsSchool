@@ -1,0 +1,35 @@
+.singleCardContainer {
+  display: flex;
+  flex-direction: column;
+  border: rgba(169, 169, 169, 0.314) 0.8px solid;
+  border-radius: 8px;
+  margin: 5px;
+
+}
+.imgCard {
+  width: 120px;
+  height: 120px;
+  border-radius: 3px;
+  align-self: center;
+  border: rgba(150, 149, 149, 0.681) 0.8px solid;
+  margin: 10px 0;
+}
+
+.titleCard,
+.descCard {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.descCard {
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+  text-align:justify;
+}
+
