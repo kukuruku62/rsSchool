@@ -4,13 +4,12 @@ import { SearchContext } from '../../../App';
 
 export const SearchForm = () => {
 
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { setSearchValue } = useContext(SearchContext);
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSearchValue(inputValue)
-    // добавить чтобы при клике на форму происходило setSearch(value or search???)
   };
 
   return (
@@ -20,7 +19,7 @@ export const SearchForm = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           type="search"
-          placeholder="Search pokemon..."
+          placeholder="Search by full name..."
         />
         <button type="submit"></button>
       </form>

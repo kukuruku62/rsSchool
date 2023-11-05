@@ -18,17 +18,20 @@ type FetchResults = {
 export const MainPage = () => {
   const MAIN_API_KEY = 'https://gateway.marvel.com:443/v1/public/characters?';
   const API_KEY = '&apikey=a5e14c8cda54a91db039a9ad0f0e7b0f';
+
   const [fetchData, setFetchData] = useState<FetchResults[]>([]);
   const [loading, setLoading] = useState(false);
   // const [limitItemsOnPage, setLimitItemsOnPage] = useState(5);
   const [selectedItemsOnPage, setSelectedItemsOnPage] = useState('5');
   const { searchValue } = useContext(SearchContext);
+  const searchByName = searchValue ? `name=${searchValue}&` : '';
+  console.log(searchValue)
 
   useEffect(() => {
     setLoading(true);
 
     try {
-      fetch(`${MAIN_API_KEY}limit=${selectedItemsOnPage}${API_KEY}`)
+      fetch(`${MAIN_API_KEY}${searchByName}limit=${selectedItemsOnPage}${API_KEY}`)
         .then((res) => res.json())
         .then((arr) => {
           setFetchData(arr.data.results);
@@ -37,7 +40,7 @@ export const MainPage = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [selectedItemsOnPage]);
+  }, [selectedItemsOnPage, searchValue]);
   // console.log(fetchData);
 
   return (
