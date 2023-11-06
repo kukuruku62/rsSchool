@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background-image: linear-gradient(to right, #b6fbff, #83a4d4);
+  padding: 0 20px;
+  border-bottom: 1px solid rgb(173, 173, 173);
+}
+
+img {
+  cursor: pointer;
+}

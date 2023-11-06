@@ -1,0 +1,22 @@
+.skeleton {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: url("../../assets/PikachuSkeleton.svg"), linear-gradient( #f4f4f4b4 25%, #efedc78d 50%, #fdfbd9 75%) ;
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+  background-position: center;
+  animation: loading 1s infinite;
+  border: rgb(219, 219, 219) 0.6px solid;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 0% 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    background-position: 0% 0;
+    transform: rotate(360deg);
+  }
+}
