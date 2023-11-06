@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, ChangeEvent } from 'react';
 import styles from './MainPage.module.scss';
 import { Skeleton } from '../components/Skeleton/Skeleton';
 import { SearchContext } from '../App';
@@ -18,20 +18,24 @@ type FetchResults = {
 export const MainPage = () => {
   const MAIN_API_KEY = 'https://gateway.marvel.com:443/v1/public/characters?';
   const API_KEY = '&apikey=a5e14c8cda54a91db039a9ad0f0e7b0f';
-
+  
   const [fetchData, setFetchData] = useState<FetchResults[]>([]);
   const [loading, setLoading] = useState(false);
-  // const [limitItemsOnPage, setLimitItemsOnPage] = useState(5);
   const [selectedItemsOnPage, setSelectedItemsOnPage] = useState('5');
+  const itemOnPageFromLocalStrg = localStorage.getItem('itemsOnPage') || selectedItemsOnPage;
   const { searchValue } = useContext(SearchContext);
   const searchByName = searchValue ? `name=${searchValue}&` : '';
-  console.log(searchValue)
+
+  const handleChangeItemsOnPage = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedItemsOnPage(e.target.value)
+    localStorage.setItem('itemsOnPage', e.target.value)
+  }
 
   useEffect(() => {
     setLoading(true);
 
     try {
-      fetch(`${MAIN_API_KEY}${searchByName}limit=${selectedItemsOnPage}${API_KEY}`)
+      fetch(`${MAIN_API_KEY}${searchByName}limit=${itemOnPageFromLocalStrg}${API_KEY}`)
         .then((res) => res.json())
         .then((arr) => {
           setFetchData(arr.data.results);
@@ -41,17 +45,16 @@ export const MainPage = () => {
       console.log(error);
     }
   }, [selectedItemsOnPage, searchValue]);
-  // console.log(fetchData);
 
   return (
     <>
       <form className={styles.form}>
         <label className={styles.label} htmlFor="number-items">number of cards per page: </label>
         <select
-          value={selectedItemsOnPage}
+          value={itemOnPageFromLocalStrg}
           name="select"
           id="number-items"
-          onChange={(e) => setSelectedItemsOnPage(e.target.value)}
+          onChange={handleChangeItemsOnPage}
         >
           <option value="3">3</option>
           <option value="5">5</option>

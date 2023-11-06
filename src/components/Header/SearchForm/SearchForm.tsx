@@ -3,17 +3,17 @@ import styles from './SearchForm.module.scss';
 import { SearchContext } from '../../../App';
 
 export const SearchForm = () => {
-
   const { setSearchValue } = useContext(SearchContext);
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchValue(inputValue)
+    setSearchValue(inputValue);
+    localStorage.setItem('valueFromInput', inputValue);
   };
 
   return (
-    <div> 
+    <div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           value={inputValue}

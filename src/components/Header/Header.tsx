@@ -8,15 +8,6 @@ import { SearchForm } from './SearchForm/SearchForm';
 
 export const Header = () => {
 
-  // const {search, setSearch} = useContext(SearchContext)
-  // console.log(search)
-  // const [inputValue, setInputValue] = useState('');
-  // const [fetchData, setFetchData] = useState('');
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
-  //   e.preventDefault();
-    
-  // }
-
   return (
     <header className={styles.container}>
       <Link to="/">
